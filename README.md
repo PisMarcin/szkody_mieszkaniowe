@@ -1,0 +1,1 @@
+# szkody_mieszkaniowe
