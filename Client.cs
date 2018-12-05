@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace IO_modul1
 {
-    class Klient
+    public class Client
     {
-        string imie; public string Imie { get { return imie; } }
-        string nazwisko; public string Nazwisko { get { return nazwisko; } }
-        long pesel; public long Pesel { get { return pesel; } }
-        string adres; public string Adres { get { return adres; } }
+        public string Name; public string name { get { return Name; } private set;}
+        public string Surname; public string Surname { get { return Surname; } private set; }
+        public long Pesel; public long Pesel { get { return Pesel; } private set;}
+        public string Adress; public string Adress { get { return Adress; } private set;}
 
         Polisa polisa;
-        public Polisa getPolisa { get { return polisa; } }
-        public int Numer_Polisy { get { return polisa.Numer_Polisy; } }
-        public DateTime Waznosc_Polisy { get { return polisa.Waznosc_Polisy; } }
+        public Polisa GetPolisa { get { return polisa; } }
+        public int NoPolisa { get { return polisa.NoPolisa; } }
+        public DateTime ExpiryDate { get { return polisa.ExpiryDate; } }
 
-        public Klient(string Imie, string Nazwisko, long Pesel, string Adres, int Numer_Polisy, DateTime data)
+        public Klient(string name, string surname, long pesel, string adress, int noPolisa, DateTime date)
         {
-            this.imie = Imie;
-            this.nazwisko = Nazwisko;
-            this.pesel = Pesel;
-            this.adres = Adres;
-            this.polisa = new Polisa(Numer_Polisy, data);
+            this.Name = name;
+            this.Surname = surname;
+            this.Pesel = pesel;
+            this.Adress = adress;
+            this.polisa = new Polisa(noPolisa, date);
 
         }
 

@@ -6,46 +6,45 @@ using System.Threading.Tasks;
 
 namespace IO_modul1
 {
-    class Zgloszenie
+    public class Report
     {
-        static int licznik_zgloszen = 0;
-        int numer_zgloszenia; public int Numer_Zgloszenia {  get { return numer_zgloszenia; } }
-        string tresc_zgloszenia; public string Tresc_Zgloszenia { get { return tresc_zgloszenia; } }
-        string imie; public string Imie { get { return imie; } }
-        string nazwisko; public string Nazwisko { get { return nazwisko; } }
-        long pesel; public long Pesel { get { return pesel; } }
-        string adres; public string Adres { get { return adres; } }
-        int numer_polisy; public int Numer_Polisy { get { return numer_polisy; } }
+        static int RaportCounter = 0;
+        int IdRaport; public int IdRaport {  get { return IdRaport; } }
+        string Content; public string Content { get { return Content; } }
+        string Name; public string Name { get { return Name; } }
+        string Surname; public string Surname { get { return Surname; } }
+        long Pesel; public long Pesel { get { return Pesel; } }
+        string Adress; public string Adres { get { return Adress; } }
+        int NoPolisa; public int NoPolisa { get { return NoPolisa; } }
 
 
-        public Zgloszenie(string Imie, string Nazwisko, long Pesel, string Adres, int Numer_Polisy,
-            string Tresc_Zgloszenia)
+        public Report(string name, string surname, long pesel, string adress, int noPolisa, string content)
         {
-            licznik_zgloszen++;
-            numer_zgloszenia = licznik_zgloszen;
-            this.imie = Imie;
-            this.nazwisko = Nazwisko;
-            this.pesel = Pesel;
-            this.adres = Adres;
-            this.numer_polisy = Numer_Polisy;
-            this.tresc_zgloszenia = Tresc_Zgloszenia;
+            RaportCounter++;
+            IdRaport = RaportCounter;
+            this.Name = name;
+            this.Surname = surname;
+            this.Pesel = pesel;
+            this.Adress = adress;
+            this.NoPolisa = noPolisa;
+            this.Content = content;
         }
 
-        public int sprawdz_poprawnosc(Klient[] klienci)
+        public int Verify(Client[] clients)
         {
-            for(int i = 0; i < klienci.Length; i++)
+            for(int i = 0; i < clients.Length; i++)
             {
-                if (this.pesel == klienci[i].Pesel)
+                if (this.Pesel == clients[i].Pesel)
                 {
-                    Console.WriteLine("Klient znaleziony na podstawie peselu. Sprawdzanie pozostałych danych...");
-                    if (string.Equals(this.imie, klienci[i].Imie) &&
-                        string.Equals(this.nazwisko, klienci[i].Nazwisko) &&
-                        string.Equals(this.adres, klienci[i].Adres) &&
-                       this.numer_polisy == klienci[i].Numer_Polisy &&
-                       klienci[i].getPolisa.czy_wazna())
+                    Console.WriteLine("Klient znaleziony na podstawie Peselu. Sprawdzanie pozostałych danych...");
+                    if (string.Equals(this.Name, clients[i].Name) &&
+                        string.Equals(this.Surname, clients[i].Surname) &&
+                        string.Equals(this.Adress, clients[i].Adres) &&
+                       this.NoPolisa == clients[i].NoPolisa &&
+                       clients[i].getPolisa.czy_wazna())
                     {
                         Console.WriteLine("Dane całkowicie poprawne");
-                        rozpatrz();
+                        Decide();
                         return 1;
                     }
                     else Console.WriteLine("Dane podane w zgloszeniu niezgodne z bazą danych!");
@@ -54,18 +53,18 @@ namespace IO_modul1
                 }
             
             }
-            Console.WriteLine("Błędnie wprowadzony pesel lub klient nieobecny w bazie!");
+            Console.WriteLine("Błędnie wprowadzony Pesel lub klient nieobecny w bazie!");
             return 0;
         }
 
-        public void rozpatrz()
+        public void Decide()
         {
             Console.WriteLine("Rozpatrz pozytywnie (t/n): ");
-            if (Console.ReadKey().KeyChar == 't') wyplata();
-            else Console.WriteLine("Zgloszenie odrzucone.");
+            if (Console.ReadKey().KeyChar == 't') Pay();
+            else Console.WriteLine("Report odrzucone.");
         }
 
-        public void wyplata()
+        public void Pay()
         {
             Console.WriteLine("\nJaki typ wyplaty? (1 - czek /2 - gotowka /3 - przelew)");
             if (Convert.ToInt32(System.Console.ReadLine())==1) Console.WriteLine("Wypłata czekiem");

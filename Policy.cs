@@ -6,23 +6,25 @@ using System.Threading.Tasks;
 
 namespace IO_modul1
 {
-    class Polisa
+    public class Policy
     {
-        int numer_polisy; public int Numer_Polisy { get { return numer_polisy; } }
-        DateTime waznosc_polisy; public DateTime Waznosc_Polisy { get { return waznosc_polisy; } }
+        int NoPolicy; 
+        public int NoPolicy { get { return NoPolicy; } }
+        DateTime ExpiryPolicy; 
+        public DateTime ExpiryPolicy { get { return ExpiryPolicy; } }
 
 
-        public bool czy_wazna()
+        public bool IsValid()
         {
-            if (waznosc_polisy >= DateTime.Today)
+            if (ExpiryPolicy >= DateTime.Today)
                 return true;
 
             return false;
         }
-        public Polisa(int Numer_Polisy, DateTime Waznosc_Polisy)
+        public Polisa(int NoPolicy, DateTime ExpiryPolicy)
         {
-            this.numer_polisy = Numer_Polisy;
-            this.waznosc_polisy = Waznosc_Polisy;
+            this.NoPolicy = NoPolicy;
+            this.ExpiryPolicy = ExpiryPolicy;
         }
     }
 }
