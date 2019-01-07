@@ -13,7 +13,7 @@ namespace SzkodyMieszkaniowe
         public Guid Id { get; protected set; } //global ID
         public string Name { get; protected set; }
         public string Surname { get; protected set; }
-        public int Pesel { get; protected set; } //To do: walidacja
+        public int Pesel { get; protected set; }
         public string Email { get; protected set; }
         public string Address { get; protected set; } //To do: walidacja
         public InsurancePolicy InsurancePolicy { get; protected set; }
@@ -23,7 +23,7 @@ namespace SzkodyMieszkaniowe
 
         public Client()
         {
-            
+
         }
         public Client(Guid userId, string email, string name, string surname, int pesel, string address, DateTime expiryDate, Guid idPolicy)
         {
@@ -45,11 +45,12 @@ namespace SzkodyMieszkaniowe
 
         public void SetPesel(int pesel)
         {
-            Pesel = pesel;
+            if (pesel.ToString().Length == 9) Pesel = pesel;
+            else throw new Exception("Please provide valid data. Pesel either too short or too long.");
         }
         public Guid GetId()
         {
-            return Id;            
+            return Id;
         }
 
         public void AddReportToClient(string content)
