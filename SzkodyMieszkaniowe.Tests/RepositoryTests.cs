@@ -15,6 +15,7 @@ namespace SzkodyMieszkaniowe.Tests
         {
             // arrange
             int pesel = 123456789;
+            string name = "jan";
             var clientDB = new ClientRepository();
 
             //act
@@ -22,10 +23,12 @@ namespace SzkodyMieszkaniowe.Tests
 
             //assert
             Assert.NotNull(clientByPesel);
+            Assert.AreSame(name, clientByPesel.Name);
+
         }
 
         [Test]
-        public void repository_should_return_user_by_id()
+        public void repository_should_return_userId_by_email()
         {
             string email = "jankowalski@email.com";
             var clientDB = new ClientRepository();
@@ -34,14 +37,13 @@ namespace SzkodyMieszkaniowe.Tests
             var clientById = clientDB.Get(idFromRepository);
 
             Assert.NotNull(clientById);
-
         }
 
         [Test]
         public void client_has_been_created_in_Db()
         {
             var id = Guid.NewGuid();
-            Client newClient = new Client(id, "newClient@test.com", "Piotr", "Skarga", 456123987, "Krk", DateTime.Now, Guid.NewGuid());
+            Client newClient = new Client(id, "newClient@test.com", "Piotr", "Skarga", 456123987, "Krk", new DateTime(2019, 10, 02), Guid.NewGuid());
             var clientDB = new ClientRepository();
 
             clientDB.Add(newClient);

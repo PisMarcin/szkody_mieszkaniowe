@@ -97,6 +97,7 @@ namespace SzkodyMieszkaniowe
                                 Console.WriteLine(xClient.Surname);
                                 Console.WriteLine(xClient.Address);
                                 Console.WriteLine(xClient.Pesel);
+                                //Console.WriteLine(xClient.Id);
                                 if (xClient.Report != null)
                                 {
                                     Console.WriteLine(xClient.Report.Content);
