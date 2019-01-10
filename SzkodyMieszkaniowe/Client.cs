@@ -10,14 +10,15 @@ namespace SzkodyMieszkaniowe
     public class Client// : ClientRepository
     {
         private static readonly Regex NameRegex = new Regex("^(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9._.-]+(?<![_.-])$");
-        public Guid Id { get; protected set; } //global ID
-        public string Name { get; protected set; }
-        public string Surname { get; protected set; }
-        public int Pesel { get; protected set; }
-        public string Email { get; protected set; }
-        public string Address { get; protected set; } //To do: walidacja
-        public InsurancePolicy InsurancePolicy { get; protected set; }
-        public Report Report { get; protected set; }
+        public Guid Id { get; } 
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public int Pesel { get; private set; }
+        public string Email { get; private set; }
+        public string Address { get; private set; }
+        public double Funds { get; set; }
+        public InsurancePolicy InsurancePolicy { get; private set; }
+        public Report Report { get; private set; }
 
         public DateTime CreateAt { get; protected set; }
 
@@ -35,7 +36,13 @@ namespace SzkodyMieszkaniowe
             SetEmail(email);
             SetName(name);
             SetSurname(surname);
+            Funds = 0.0;
             CreateAt = DateTime.UtcNow;
+        }
+
+        public void PayCompensation(double funds)
+        {
+            Funds += funds;
         }
 
         public void AddInsurancePolicy(InsurancePolicy insurancePolicy)

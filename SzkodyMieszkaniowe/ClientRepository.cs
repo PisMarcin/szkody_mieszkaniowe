@@ -12,11 +12,11 @@ namespace SzkodyMieszkaniowe
         {
             _users = new HashSet<Client>()
             {
-                new Client(Guid.NewGuid(), "jankowalski@email.com", "jan", "kowalski", 123456789, "Krakow",
+                new Client(Guid.NewGuid(), "jankowalski@email.com", "Jan", "Kowalski", 123456789, "Krakow",
                     new DateTime(2020, 5, 1, 8, 30, 52), Guid.NewGuid()),
-                new Client(Guid.NewGuid(), "andrzejbrzechwa@email.com", "andrzej", "brzechwa", 987456321, "Krakow",
+                new Client(Guid.NewGuid(), "andrzejbrzechwa@email.com", "Andrzej", "Brzechwa", 987456321, "Krakow",
                     new DateTime(2022, 5, 1, 8, 30, 52), Guid.NewGuid()),
-                new Client(Guid.NewGuid(), "antonikiepski@email.com", "antoni", "kiepski", 987654321, "Krakow",
+                new Client(Guid.NewGuid(), "antonikiepski@email.com", "Antoni", "Kiepski", 987654321, "Krakow",
                     new DateTime(2021, 5, 1, 8, 30, 52), Guid.NewGuid())
 
             };

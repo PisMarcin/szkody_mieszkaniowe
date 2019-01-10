@@ -8,9 +8,9 @@ namespace SzkodyMieszkaniowe
 {
     public class Report
     {
-        public Guid Id { get; protected set; }
-        public string Content { get; protected set; }
-        public DateTime DateTime { get; protected set; }
+        public Guid Id { get; private set; }
+        public string Content { get; private set; }
+        public DateTime CreateAt { get; private set; }
         public Report()
         {
             
@@ -19,11 +19,13 @@ namespace SzkodyMieszkaniowe
         {
             Id = id;
             Content = content;
+            CreateAt = DateTime.UtcNow;
         }
 
         public Report AddReport(Guid id, string content)
         {
             var report = new Report(id, content);
+            report.CreateAt = DateTime.UtcNow;
             return report;
         }
     }

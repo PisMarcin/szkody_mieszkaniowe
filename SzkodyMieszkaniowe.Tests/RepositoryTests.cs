@@ -15,7 +15,7 @@ namespace SzkodyMieszkaniowe.Tests
         {
             // arrange
             int pesel = 123456789;
-            string name = "jan";
+            string name = "Jan";
             var clientDB = new ClientRepository();
 
             //act

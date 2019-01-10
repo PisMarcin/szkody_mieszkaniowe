@@ -8,9 +8,9 @@ namespace SzkodyMieszkaniowe
 {
     public  class InsurancePolicy
     {
-        public  Guid Id { get; set; }
-        public  DateTime ExpiryDate { get; set; }
-        public  DateTime CreateAt { get; set; }
+        public  Guid Id { get; private set; }
+        public  DateTime ExpiryDate { get; private set; }
+        public  DateTime CreateAt { get; private set; }
 
         public InsurancePolicy()
         {
@@ -20,6 +20,7 @@ namespace SzkodyMieszkaniowe
         {
             Id = id;
             ExpiryDate = expiryDate;
+            CreateAt = DateTime.UtcNow;
         }
         public  void SetExpiryDate(DateTime expiryDate)
         {
